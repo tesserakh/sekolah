@@ -35,7 +35,7 @@ for i in levels_txt:
 levels_file.close()
 status = ['NEGERI', 'SWASTA'] # [ 'State', 'Private' ]
 # There is 555,822 sekolah (schools) in total (all schools)
-npages = round(55822/4)
+npages = 32617
 
 # Create endpoint/link list to be requested
 payload = []
