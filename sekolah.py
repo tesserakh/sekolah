@@ -25,17 +25,11 @@ headers = {
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 }
 
-# Variables: levels, status
-levels_file = open("levels1.txt", "r")
-levels_txt = levels_file.read()
-levels_txt = levels_txt.split('\n')
-levels = []
-for i in levels_txt:
-    levels.append(i.replace(' ', '+'))
-levels_file.close()
-status = ['NEGERI', 'SWASTA'] # [ 'State', 'Private' ]
-# There is 555,822 sekolah (schools) in total (all schools)
-npages = 32617
+# Given variables
+# There is 555,822 sekolah (schools) in total
+levels = ['SMA']
+status = ['SWASTA', 'NEGERI']
+npages = 1
 
 # Create endpoint/link list to be requested
 payload = []
@@ -50,7 +44,7 @@ print(f'Link was created for: page 1-%s in level=%s & status=%s' % (npages, leve
 for req in payload:
     # Give some informations about process
     pg = req.split('&')[0].replace('page=', '')
-    lv = req.split('&')[4].replace('bentuk_pendidikan=', '').replace('+',' ')
+    lv = req.split('&')[4].replace('bentuk_pendidikan=', '')
     st = req.split('&')[5].replace('status_sekolah=', '')
     print(f'Crawling page=%s, level=%s, status=%s' % (pg, lv, st))
     
@@ -107,4 +101,4 @@ tbl_data = {
 
 tbl_data = pd.DataFrame(tbl_data)
 tbl_data.to_csv(file_name, index = False)
-print(f'Data saved to {file_name} with {len(tbl_data.index)} rows')
+print(f'Data saved to {file_name}')
