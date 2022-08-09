@@ -26,7 +26,7 @@ headers = {
 }
 
 # Variables: levels, status
-levels_file = open("levels.txt", "r")
+levels_file = open("levels1.txt", "r")
 levels_txt = levels_file.read()
 levels_txt = levels_txt.split('\n')
 levels = []
