@@ -36,8 +36,8 @@ payload = payload.split('\n')
 payloadfile.close()
 
 
-# Main process (process #4)
-for req in payload[15000:20000]:
+# Main process (process #5)
+for req in payload[20000:25000]:
     # Give some informations about process
     pg = req.split('&')[0].replace('page=', '')
     lv = req.split('&')[4].replace('bentuk_pendidikan=', '').replace('+',' ')
