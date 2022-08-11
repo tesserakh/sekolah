@@ -1,4 +1,4 @@
-name: Getting Data
+name: Getting Data from Mainpage
 
 on:
   workflow_dispatch:
