@@ -27,7 +27,7 @@ pip install requests beautifulsoup4 lxml urllib3 pandas
 - `payload.py` - Generate endpoint (payload data) to supplay POST request by `main.py`
 - `main.py` - Create request / getting data from "mainpage" with pagination
 - `profile.py` - Get other information from school's "profile" pages for data completion
-- `sekolah.py`
+- `sekolah.py` - Old version of code (made simple)
 
 ## Datasets
 
