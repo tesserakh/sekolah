@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 # Setting for disable warning about expired web certificate
 urllib3.disable_warnings()
 
-file_name = 'data/data24.csv'
+file_name = 'data/data.csv'
 print(f'Data will be saved to {file_name}.')
 
 # Empty list data slots
@@ -34,10 +34,12 @@ payloadfile = open('payload.txt', 'r')
 payload = payloadfile.read()
 payload = payload.split('\n')
 payloadfile.close()
+for line in payload[::-1]:
+	if len(line.split('&')) == 1:
+		payload = payload[:-1]
 
-
-# Main process (process #24)
-for req in payload[115000:120000]:
+# Main process (additional process)
+for req in payload:
     # Give some informations about process
     pg = req.split('&')[0].replace('page=', '')
     lv = req.split('&')[4].replace('bentuk_pendidikan=', '').replace('+',' ')

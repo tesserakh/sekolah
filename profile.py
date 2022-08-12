@@ -3,19 +3,20 @@ import urllib3
 import pandas as pd
 from bs4 import BeautifulSoup
 
-csv_url_datasource = 'data/data1.csv'
+txt_url_datasource = 'data/url/url1.txt'
 csv_name_datastore = 'data/profile1.csv'
 
 # Setting for disable warning about expired web certificate
 urllib3.disable_warnings()
 
-# Import url from data/data.csv
+# Import url from url*.txt in data/url
 url_list = []
-with open(csv_url_datasource) as urlfile:
+with open(txt_url_datasource) as urlfile:
     urltext = urlfile.read()
-    urltext = urltext.split('\n')[1:]
+    urltext = urltext.split('\n')
     for row in urltext:
-        url_list.append(row.split(',')[-1])
+        url_list.append(row)
+urlfile.close()
 
 # Main function
 def get_school_info(url):
