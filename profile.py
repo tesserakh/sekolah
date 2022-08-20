@@ -3,8 +3,8 @@ import urllib3
 import pandas as pd
 from bs4 import BeautifulSoup
 
-txt_url_datasource = 'data/url/url1.txt'
-csv_name_datastore = 'data/profile1.csv'
+txt_url_datasource = 'data/url/urls.txt'
+csv_name_datastore = 'data/profile_sample.csv'
 
 # Setting for disable warning about expired web certificate
 urllib3.disable_warnings()
@@ -28,6 +28,14 @@ def get_school_info(url):
         # URL info as first field
         label = ['Link']
         value = [url]
+        # Parsing address
+        try:
+            title_header = page.find('h4', class_ = 'page-header')
+            address = title_header.find('font').text.replace('(master referensi)', '').strip()
+            label.append('Address')
+            value.append(address)
+        except:
+            None
         # Parsing informations
         try:
             # Akreditasi, kepala sekolah, operator
@@ -46,7 +54,7 @@ def get_school_info(url):
                         label.append(j[0].strip())
                         value.append(j[1].strip())
                     else:
-                        break
+                        continue
             # Store info as label and value in data slot
             data = { label[i] : value[i] for i in range(len(label)) }
             return data
